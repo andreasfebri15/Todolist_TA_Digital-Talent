@@ -13,21 +13,21 @@ function TodoList() {
     const newTodos = [todo, ...todos];
     setTodos(newTodos);
   };
-  const completeTodo = id => {
-    let updateTodos = todos.map(todo => {
-      if (todo.id === id) {
-        todo.isComplete = !todo.isComplete;
-      }
+  //   const completeTodo = id => {
+  //     let updateTodos = todos.map(todo => {
+  //       if (todo.id === id) {
+  //         todo.isComplete = !todo.isComplete;
+  //       }
 
-      return todo;
-    });
-    setTodos(updateTodos);
-  };
+  //       return todo;
+  //     });
+  //     setTodos(updateTodos);
+  //   };
 
   return (
     <div className="Todo-list">
       <TodoForm onSubmit={addtodo} />
-      <Todo todos={todos} completeTodo={completeTodo} />
+      {/* <Todo todos={todos} completeTodo={completeTodo} /> */}
     </div>
   );
 }
