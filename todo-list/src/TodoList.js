@@ -1,23 +1,33 @@
 import React, { useState } from "react";
+import Todo from "./Todo";
 import TodoForm from "./TodoForm";
 
 function TodoList() {
-  const [todoos, settodos] = useState([]);
+  const [todos, setTodos] = useState([]);
 
   const addtodo = todo => {
     if (!todo.text || /^\s*$/.test(todo.text)) {
       return;
     }
 
-    const newTodos = [todo, todos];
-    settodos(newTodos);
-    console.log(todos);
+    const newTodos = [todo, ...todos];
+    setTodos(newTodos);
   };
+  const completeTodo = id => {
+    let updateTodos = todos.map(todo => {
+      if (todo.id === id) {
+        todo.isComplete = !todo.isComplete;
+      }
+
+      return todo;
+    });
+    setTodos(updateTodos);
+  };
+
   return (
     <div className="Todo-list">
-      <h1>Belajar menggunakan React JS</h1>
-      <h1>Catatan rencana hari ini</h1>
       <TodoForm onSubmit={addtodo} />
+      <Todo todos={todos} completeTodo={completeTodo} />
     </div>
   );
 }
